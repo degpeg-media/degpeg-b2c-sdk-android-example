@@ -1,12 +1,8 @@
 <h1 align="center">DEGPEG</h1>
-<p align="center">
-  <a href="https://jitpack.io/#degpeg-media/degpeg-b2c-sdk-android"> 
-     <img src="https://jitpack.io/v/degpeg-media/degpeg-b2c-sdk-android/month.svg" />
-  </a>
-  <a href="https://jitpack.io/#degpeg-media/degpeg-b2c-sdk-android">
-      <img src="https://jitpack.io/v/degpeg-media/degpeg-b2c-sdk-android.svg"/>
-  </a>
-</p>
+<!-- <p align="center">
+  <a href="https://jitpack.io/#degpeg-media/degpeg-b2c-sdk-android"> <img src="https://jitpack.io/v/degpeg-media/degpeg-b2c-sdk-android/month.svg"/></a>
+  <a href="https://jitpack.io/#degpeg-media/degpeg-b2c-sdk-android"> <img src="https://jitpack.io/v/degpeg-media/degpeg-b2c-sdk-android.svg"/></a>
+</p> -->
 
 Degpeg is Live Commerce Platform with unique features like multi-streaming ( compatible with 30+ Social platforms ) for brands & content creators worldwide. The vision of Degpeg is to empower live streaming in a way that can be used not only to produce real-time content but build a meaningful business out of it, for content creators or advertisers or associated businesses like e-commerce, retail, education, gaming etc.
 
@@ -41,7 +37,7 @@ As part of product enhancements Degpeg is looking for vendors to support product
  ```groovy
 allprojects {
     repositories {
-         maven {
+        maven {
             url "https://jitpack.io"
             credentials { username 'jp_i6nttc8gkplpnmntma3brth0j9' }
         }
@@ -53,7 +49,7 @@ allprojects {
 
 ```groovy
 dependencies {
-     implementation 'com.github.degpeg-media:degpeg-b2c-sdk-android:release_version'
+    implementation 'com.github.degpeg-media:degpeg-b2c-sdk-android:release_version'
 }
 ```
 
@@ -62,15 +58,15 @@ dependencies {
 Create the Application class
 ```kotlin
 class AppController : Controller() {
-  override fun onCreate() {
-    super.onCreate()
-  }
+    override fun onCreate() {
+        super.onCreate()
+    }
 }
 ```
 Add the application class into the manifest.xml file
 ```xml
 <application android:name=".AppController">
-  
+
 </application>
 ```
 
@@ -82,7 +78,7 @@ DegpegSDKProvider.init(appId = appId, secretKey = secretKey)
 5. Provide the current user details
 ```kotlin
 DegpegSDKProvider.updateUser(
-  User(userName = "Dhaval Patel", userId = "6278c4556cb38a7a9c10df6e")
+    User(userName = "Dhaval Patel", userId = "6278c4556cb38a7a9c10df6e")
 )
 ```
 
@@ -91,16 +87,16 @@ DegpegSDKProvider.updateUser(
 * Use the SDK as activity
 ```kotlin
  DegpegSDKProvider.startAsActivity(
-                    activity = this,
-                    publisherId = publisherId
-                )
+    activity = this,
+    publisherId = publisherId
+)
 ```
 
 * Use the SDK as fragment
 ```kotlin
 DegpegSDKProvider.useAsFragment(
-            supportFragmentManager,
-            binding.container.id,
-            publisherId = publisherId
-        )
+    supportFragmentManager,
+    binding.container.id,
+    publisherId = publisherId
+)
 ```
