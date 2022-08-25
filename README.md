@@ -45,13 +45,15 @@ allprojects {
 }
 ```
 
-2. Add the dependency to your app level build file
+2. Add the dependency to your app level build file 
 
 ```groovy
 dependencies {
     implementation 'com.github.degpeg-media:degpeg-b2c-sdk-android:release_version'
 }
 ```
+
+(latest release_version : 1.0.2)
 
 3. Create the Application class and extends Controller class. Also add the application class into the manifest.xml file.
 

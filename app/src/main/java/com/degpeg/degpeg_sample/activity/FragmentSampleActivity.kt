@@ -1,9 +1,8 @@
-package com.degpeg.degpeg_sample
+package com.degpeg.degpeg_sample.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.degpeg.b2csdk.DegpegSDKProvider
-import com.degpeg.degpeg_sample.MainActivity.Companion.publisherId
 import com.degpeg.degpeg_sample.databinding.ActivityFragmentSampleBinding
 
 class FragmentSampleActivity : AppCompatActivity() {
@@ -21,7 +20,6 @@ class FragmentSampleActivity : AppCompatActivity() {
         DegpegSDKProvider.useAsFragment(
             supportFragmentManager,
             binding.container.id,
-            publisherId = publisherId
         )
     }
 }
