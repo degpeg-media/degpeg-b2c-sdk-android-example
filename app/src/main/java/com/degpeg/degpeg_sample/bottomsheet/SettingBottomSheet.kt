@@ -85,6 +85,14 @@ class SettingBottomSheet() : BaseBottomSheet(), View.OnClickListener {
                     userRole = LocalDataHelper.userRole,
                     requiredReset = true,
                     onSuccess = {
+                        requireActivity().runOnUiThread {
+                            Toast.makeText(
+                                requireActivity(),
+                                "Auth Token Updated Successfully",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                        dismiss()
                     },
                     onError = {
                         requireActivity().runOnUiThread {
@@ -93,10 +101,10 @@ class SettingBottomSheet() : BaseBottomSheet(), View.OnClickListener {
                                 it,
                                 Toast.LENGTH_SHORT
                             ).show()
+                            dismiss()
                         }
                     }
                 )
-                dismiss()
             }
         }
     }
