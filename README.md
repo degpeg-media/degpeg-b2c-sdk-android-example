@@ -52,7 +52,7 @@ dependencies {
 }
 ```
 
-(latest release_version : 1.0.2)
+(latest release_version : 1.0.3)
 
 3. Create the Application class and extends Controller class. Also add the application class into the manifest.xml file.
 
