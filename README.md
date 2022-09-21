@@ -39,7 +39,6 @@ allprojects {
     repositories {
         maven {
             url "https://jitpack.io"
-            credentials { username 'jp_i6nttc8gkplpnmntma3brth0j9' }
         }
     }
 }
