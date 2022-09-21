@@ -74,7 +74,16 @@ Add the application class into the manifest.xml file
 
 4. Initialize SDK
 ```kotlin
-DegpegSDKProvider.init(appId = appId, secretKey = secretKey)
+DegpegSDKProvider.init(
+    appId = appId,
+    secretKey = secretKey,
+    publisherId = publisherId,
+    providerId = providerId,
+    userRole = userRole,
+    onSuccess = { },
+    onError = {
+        runOnUiThread { Toast.makeText(this, it, Toast.LENGTH_SHORT).show() }
+    })
 ```
 
 5. Provide the current user details

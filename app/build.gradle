@@ -54,7 +54,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
     // Degpeg SDK
-    implementation 'com.github.degpeg-media:degpeg-b2c-sdk-android:1.0.2'
+    implementation 'com.github.degpeg-media:degpeg-b2c-sdk-android:1.0.3'
 
     implementation platform('com.google.firebase:firebase-bom:30.3.1')
     implementation 'com.google.firebase:firebase-crashlytics-ktx'
