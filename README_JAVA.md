@@ -77,7 +77,7 @@ Add the application class into the manifest.xml file
 ```
 
 4. Initialize SDK with success and failure callback
-```
+```java
  DegpegSDKProvider.INSTANCE.init(
         appId,
         secretKey,
@@ -106,7 +106,7 @@ UserRole.PROVIDER
 ```
 
 5. Provide the current user details
-```
+```java
 DegpegSDKProvider.INSTANCE.updateUser(
     new User("Dhaval Patel", "6278c4556cb38a7a9c10df6e")
 );
@@ -115,7 +115,7 @@ DegpegSDKProvider.INSTANCE.updateUser(
 # Usage
 
 * Use the SDK as activity
-```
+```java
  DegpegSDKProvider.INSTANCE.startAsActivity(
     this,
     s -> {
@@ -127,7 +127,7 @@ DegpegSDKProvider.INSTANCE.updateUser(
 ```
 
 * Use the SDK as fragment
-```
+```java
  DegpegSDKProvider.INSTANCE.useAsFragment(
     getSupportFragmentManager(),
     0,
@@ -140,7 +140,7 @@ DegpegSDKProvider.INSTANCE.updateUser(
 ```
 
 * Launch the streaming player with session id 
-```
+```java
 DegpegSDKProvider.INSTANCE.startPlayer(
                 activity = this, 
                 videoSessionId = "6264d7678737f6bbe4d1c37"
