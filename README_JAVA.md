@@ -57,11 +57,12 @@ Current release_version : <img src="https://jitpack.io/v/degpeg-media/degpeg-b2c
 3. Create the Application class and extends Controller class. Also add the application class into the manifest.xml file.
 
 Create the Application class
-```kotlin
-class AppController : Controller() {
-  override fun onCreate() {
-    super.onCreate()
-  }
+```Java
+class AppController extends Controller {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+    }
 }
 ```
 
@@ -71,66 +72,79 @@ Add the application class into the manifest.xml file
     android:name=".AppController"
     tools:replace="android:name"
 >
-
+  
 </application>
 ```
 
 4. Initialize SDK with success and failure callback
-```kotlin
-DegpegSDKProvider.init(
-    appId = appId,
-    secretKey = secretKey,
-    publisherId = publisherId,
-    providerId = providerId,
-    userRole = userRole,
-    onSuccess = { },
-    onError = {
-        runOnUiThread { Toast.makeText(this, it, Toast.LENGTH_SHORT).show() }
-    })
-
+```
+ DegpegSDKProvider.INSTANCE.init(
+        appId,
+        secretKey,
+        publisherId,
+        providerId,
+        userRole,
+        true,
+        () -> {
+            runOnUiThread(() -> {
+                Toast.makeText(JavaSampleActivity.this, "Success", Toast.LENGTH_SHORT).show();
+            });
+            return null;
+        },
+        s -> {
+            runOnUiThread(() -> {
+                Toast.makeText(JavaSampleActivity.this, "Error : "+s, Toast.LENGTH_SHORT).show();
+            });
+            return null;
+        });
 ```
 
-* UserRoles
+* UserRoles  
 ```
 UserRole.PUBLISHER
 UserRole.PROVIDER
 ```
 
 5. Provide the current user details
-```kotlin
-DegpegSDKProvider.updateUser(
-  User(userName = "Dhaval Patel", userId = "6278c4556cb38a7a9c10df6e")
-)
+```
+DegpegSDKProvider.INSTANCE.updateUser(
+    new User("Dhaval Patel", "6278c4556cb38a7a9c10df6e")
+);
 ```
 
 # Usage
 
 * Use the SDK as activity
-```kotlin
- DegpegSDKProvider.startAsActivity(
-                    activity = this,
-                    publisherId = publisherId
-                )
+```
+ DegpegSDKProvider.INSTANCE.startAsActivity(
+    this,
+    s -> {
+        runOnUiThread(() -> {
+            Toast.makeText(JavaSampleActivity.this, "Error : "+s, Toast.LENGTH_SHORT).show();
+        });
+        return null;
+    });
 ```
 
 * Use the SDK as fragment
-```kotlin
-DegpegSDKProvider.useAsFragment(
-    supportFragmentManager = supportFragmentManager,
-    containerId = binding.container.id,
-    onError = {
-    }
-)
+```
+ DegpegSDKProvider.INSTANCE.useAsFragment(
+    getSupportFragmentManager(),
+    0,
+    s -> {
+        runOnUiThread(() -> {
+            Toast.makeText(JavaSampleActivity.this, "Error : "+s, Toast.LENGTH_SHORT).show();
+        });
+        return null;
+    });
 ```
 
-* Launch the streaming player with session id
-```kotlin
-DegpegSDKProvider.startPlayer(
+* Launch the streaming player with session id 
+```
+DegpegSDKProvider.INSTANCE.startPlayer(
                 activity = this, 
                 videoSessionId = "6264d7678737f6bbe4d1c37"
             )
 ```
 
-# For Java support please refer the JAVA document
-<a href="https://github.com/degpeg-media/degpeg-b2c-sdk-android-example/blob/main/README_JAVA.md">JAVA Document</a>
 
