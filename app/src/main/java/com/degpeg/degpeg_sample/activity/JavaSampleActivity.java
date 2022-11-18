@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.degpeg.b2csdk.DegpegSDKProvider;
 import com.degpeg.b2csdk.UserRole;
 import com.degpeg.degpeg_sample.databinding.ActivityMainBinding;
+import com.degpeg.model.AppUiConfig;
 import com.degpeg.model.User;
 
 public class JavaSampleActivity extends AppCompatActivity {
@@ -34,6 +35,8 @@ public class JavaSampleActivity extends AppCompatActivity {
                     runOnUiThread(() -> {
                         Toast.makeText(JavaSampleActivity.this, "Success", Toast.LENGTH_SHORT).show();
                     });
+                    DegpegSDKProvider.INSTANCE.startPlayer(this, "6203642ba958e382ff246d66");
+
                     return null;
                 },
                 s -> {
@@ -42,6 +45,15 @@ public class JavaSampleActivity extends AppCompatActivity {
                     });
                     return null;
                 });
+
+        AppUiConfig appUiConfig = new AppUiConfig();
+        appUiConfig.setChatEnable(true);
+        appUiConfig.setMuteEnable(true);
+        appUiConfig.setLikeEnable(true);
+        appUiConfig.setProductEnable(false);
+        appUiConfig.setShareEnable(false);
+
+        DegpegSDKProvider.INSTANCE.updateAppUiConfig(appUiConfig);
 
         DegpegSDKProvider.INSTANCE.updateUser(
                  new User("Dhaval Patel", "6278c4556cb38a7a9c10df6e")
