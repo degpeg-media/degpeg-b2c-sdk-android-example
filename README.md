@@ -127,7 +127,9 @@ DegpegSDKProvider.useAsFragment(
 ```kotlin
 DegpegSDKProvider.startPlayer(
                 activity = this, 
-                videoSessionId = "6264d7678737f6bbe4d1c37"
+                videoSessionId = "6264d7678737f6bbe4d1c37",
+                onError = {
+                }
             )
 ```
 
@@ -147,6 +149,7 @@ DegpegSDKProvider.updateAppUiConfig(
 )
 ```
 
+
 # For Java support please refer the JAVA document
-<a href="https://github.com/degpeg-media/degpeg-b2c-sdk-android-example/blob/main/README_JAVA.md">JAVA Document</a>
+<a href="https://github.com/degpeg-media/degpeg-b2c-sdk-android/blob/master/README_JAVA.md">JAVA Document</a>
 

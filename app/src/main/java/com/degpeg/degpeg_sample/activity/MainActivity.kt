@@ -76,8 +76,15 @@ class MainActivity : ActionBarActivity(), View.OnClickListener {
     private fun setUpImageSlider() {
         binding.rvSliderImage.onFlingListener = null
         PagerSnapHelper().attachToRecyclerView(binding.rvSliderImage)
-        binding.rvSliderImage.adapter =
-            SliderAdapter(getDummyImage(), callback = { _, _ -> binding.btnStart.performClick()})
+        binding.rvSliderImage.adapter = SliderAdapter(getDummyImage(), callback = { _, _ ->
+            DegpegSDKProvider.startPlayer(
+                activity = this,
+                videoSessionId = "61fbc2cba958e382ff246c25",
+                onError = {
+                    runOnUiThread { Toast.makeText(this, it, Toast.LENGTH_SHORT).show() }
+                }
+            )
+        })
     }
 
     private fun dummyData(): MutableList<ContentModel> {

@@ -37,7 +37,7 @@ As part of product enhancements Degpeg is looking for vendors to support product
  ```groovy
 allprojects {
     repositories {
-         maven {
+        maven {
             url "https://jitpack.io"
         }
     }
@@ -48,7 +48,7 @@ allprojects {
 
 ```groovy
 dependencies {
-     implementation 'com.github.degpeg-media:degpeg-b2c-sdk-android:release_version'
+    implementation 'com.github.degpeg-media:degpeg-b2c-sdk-android:release_version'
 }
 ```
 Current release_version : <img src="https://jitpack.io/v/degpeg-media/degpeg-b2c-sdk-android.svg"/>
@@ -72,12 +72,12 @@ Add the application class into the manifest.xml file
     android:name=".AppController"
     tools:replace="android:name"
 >
-  
+
 </application>
 ```
 
 4. Initialize SDK with success and failure callback
-```java
+```
  DegpegSDKProvider.INSTANCE.init(
         appId,
         secretKey,
@@ -99,14 +99,14 @@ Add the application class into the manifest.xml file
         });
 ```
 
-* UserRoles  
+* UserRoles
 ```
 UserRole.PUBLISHER
 UserRole.PROVIDER
 ```
 
 5. Provide the current user details
-```java
+```
 DegpegSDKProvider.INSTANCE.updateUser(
     new User("Dhaval Patel", "6278c4556cb38a7a9c10df6e")
 );
@@ -115,35 +115,41 @@ DegpegSDKProvider.INSTANCE.updateUser(
 # Usage
 
 * Use the SDK as activity
-```java
+```
  DegpegSDKProvider.INSTANCE.startAsActivity(
     this,
-    s -> {
+    errorString -> {
         runOnUiThread(() -> {
-            Toast.makeText(JavaSampleActivity.this, "Error : "+s, Toast.LENGTH_SHORT).show();
+            Toast.makeText(JavaSampleActivity.this, "Error : "+errorString, Toast.LENGTH_SHORT).show();
         });
         return null;
     });
 ```
 
 * Use the SDK as fragment
-```java
+```
  DegpegSDKProvider.INSTANCE.useAsFragment(
     getSupportFragmentManager(),
     0,
-    s -> {
+    errorString -> {
         runOnUiThread(() -> {
-            Toast.makeText(JavaSampleActivity.this, "Error : "+s, Toast.LENGTH_SHORT).show();
+            Toast.makeText(JavaSampleActivity.this, "Error : "+errorString, Toast.LENGTH_SHORT).show();
         });
         return null;
     });
 ```
 
-* Launch the streaming player with session id 
-```java
+* Launch the streaming player with session id
+```
 DegpegSDKProvider.INSTANCE.startPlayer(
                 activity = this, 
-                videoSessionId = "6264d7678737f6bbe4d1c37"
+                videoSessionId = "6264d7678737f6bbe4d1c37",
+                errorString -> {
+                    runOnUiThread(() -> {
+                        Toast.makeText(JavaSampleActivity.this, "Error : "+errorString, Toast.LENGTH_SHORT).show();
+                    });
+                    return null;
+                });
             )
 ```
 
@@ -151,7 +157,7 @@ DegpegSDKProvider.INSTANCE.startPlayer(
 Update the player screen.
 Default all views are visible, you can pass the specific parameters for manage the view visibility
 
-```java
+```
 AppUiConfig appUiConfig = new AppUiConfig();
 appUiConfig.setChatEnable(true);
 appUiConfig.setMuteEnable(true);
@@ -161,4 +167,5 @@ appUiConfig.setShareEnable(false);
 
 DegpegSDKProvider.INSTANCE.updateAppUiConfig(appUiConfig);
 ```
+
 
